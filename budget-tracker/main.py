@@ -1,14 +1,25 @@
 transaction = []
 
-print("\n===Budget Tracker===")
-print("Options:\n1. Transaction\n2. Leave")
-choice = input("What option would you like to proceed with: ").lower()
+while True:
 
-if choice = "1" or "transaction":
-    print("You are being redirected to the transaction page.")
-else:
-    choice2 = input("Are you sure you want to leave (Y/N): ").lower()
-if choice2 = "y":
-    print("You are about to leave!")
-else:
-    print("You will stay in the program!")
+    print("\n===Budget Tracker===")
+    print("Options:\n1. Transaction\n2. Leave")
+    choice = input("What option would you like to proceed with: ").lower()
+
+    if choice == "1":
+        description = str(input("Enter the description of your transaction (e.g food): "))
+        amount = float(input("Enter the amount of your transaction (e.g 2.50): £ "))
+        print(f"You have requested a transaction of £{amount} for {description}.")
+
+    elif choice == "2":
+        confirm = input("Are you sure you want to leave (Y/N): ").lower()
+
+        if confirm == "y":
+            print("Ill be back!")
+            break
+        else:
+            print("Returning to menu...")
+    else:
+        print("Please enter a valid option: ")
+
+
