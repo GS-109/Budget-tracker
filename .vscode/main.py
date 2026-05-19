@@ -1,3 +1,4 @@
+from flask import Flask
 transaction = []
 
 while True:
@@ -15,7 +16,7 @@ while True:
         confirm = input("Are you sure you want to leave (Y/N): ").lower()
 
         if confirm == "y":
-            print("Ill be back!")
+            print("Goodbye!")
             break
         else:
             print("Returning to menu...")
