@@ -1,5 +1,5 @@
-from flask import Flask
-transaction = []
+import json
+transactions = []
 
 while True:
 
@@ -11,6 +11,7 @@ while True:
         description = str(input("Enter the description of your transaction (e.g food): "))
         amount = float(input("Enter the amount of your transaction (e.g 2.50): £ "))
         print(f"You have requested a transaction of £{amount} for {description}.")
+        transactions.append({"description" : description, "amount" : amount})
 
     elif choice == "2":
         confirm = input("Are you sure you want to leave (Y/N): ").lower()
@@ -18,9 +19,13 @@ while True:
         if confirm == "y":
             print("Goodbye!")
             break
+
         else:
             print("Returning to menu...")
+        
     else:
-        print("Please enter a valid option: ")
+        int(input("Please enter a valid number: "))   
+        
+        
 
 
