@@ -3,7 +3,7 @@ import json
 
 def save_transactions(transactions):
     with open("budget.json", "w") as f:
-        json.dump(transaction, f)
+        json.dump(transactions, f)
 
 def load_transactions():
     try:
@@ -11,9 +11,9 @@ def load_transactions():
             return json.load(f)
     except FileNotFoundError:
         return[]
+    except json.JSONDecodeError:
+        return[]    
     
-
-
 transactions = load_transactions()
 
 while True:
