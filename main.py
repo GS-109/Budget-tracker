@@ -1,5 +1,15 @@
 import time
 import json
+from rich import print
+from rich.table import Table
+
+def show_transactions(transactions):
+    table = Table(title = "Your transactions")
+    table.add_column("Description")
+    table.add_column("Amount")
+    for transaction in transactions:
+        table.add_row(transaction['description'], str(transaction['amount']))
+    print(table)
 
 def save_transactions(transactions):
     with open("budget.json", "w") as f:
@@ -35,9 +45,8 @@ while True:
         confirm = input("Are you sure you want to leave (Y/N): ").lower()
 
         if confirm == "y":
-            print("Goodbye, heres an overview of your transactions: ")
-            for transaction in transactions:
-                print(f"{transaction['description']} - £{transaction['amount']}")
+            print("Goodbye, heres an overview of your transactions: ")   
+            show_transactions(transactions)
             break
 
         else:
@@ -45,7 +54,5 @@ while True:
         
     else:
         print("Please enter a valid option, 1 or 2!")   
-        
-        
 
 
