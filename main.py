@@ -30,29 +30,34 @@ while True:
 
     print("\n===Budget Tracker===")
     time.sleep(1)
-    print("Options:\n1. Transaction\n2. Leave")
+    print("Options:\n1. Make a transaction\n2. View transactions\n3. Leave")
     time.sleep(1)
     choice = input("What option would you like to proceed with: ").lower()
 
-    if choice == "1":
+    if choice in ("1", "make a transaction"):
         description = str(input("Enter the description of your transaction (e.g food): "))
         amount = float(input("Enter the amount of your transaction (e.g 2.50): £ "))
         print(f"You have requested a transaction of £{amount} for {description}.")
         transactions.append({"description" : description, "amount" : amount})
         save_transactions(transactions)
 
-    elif choice == "2":
+    elif choice in ("2", "view transactions"):
+        show_transactions(transactions)
+
+    elif choice in ("3", "leave"):
         confirm = input("Are you sure you want to leave (Y/N): ").lower()
 
-        if confirm == "y":
+        if confirm in ("y", "yes"):
             print("Goodbye, heres an overview of your transactions: ")   
             show_transactions(transactions)
             break
-
+            
         else:
+            time.sleep(1)
             print("Returning to menu...")
         
     else:
-        print("Please enter a valid option, 1 or 2!")   
+        time.sleep(1)
+        print("Please enter a valid option, 1, 2 or 3!")   
 
 
